@@ -1,10 +1,10 @@
 /* UMI Obsidian theme — industrial palette, orange as activation only */
 
 .theme-dark, .theme-light {
-  --background-primary: #1a1a1a;
-  --background-primary-alt: #1a1a1a;
-  --background-secondary: #1a1a1a;
-  --background-secondary-alt: #1a1a1a;
+  --background-primary: #2a1c12;
+  --background-primary-alt: #2a1c12;
+  --background-secondary: #2a1c12;
+  --background-secondary-alt: #2a1c12;
   --text-normal: #fbf1c7;
 
   --text-selection: #FF6700;
