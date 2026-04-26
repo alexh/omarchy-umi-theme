@@ -1,0 +1,175 @@
+@import "../omarchy/current/theme/waybar.css";
+
+/* Utility Materials Inc. — UMI-OS waybar theme
+   Locks the bar to the UMI palette (orange on near-black) regardless of
+   which omarchy theme is active. Tokens trace back to the canonical vault:
+   #ff9500 — primary activation orange (hydrogen, materials-nyc)
+   #050505 — page background (umi-store-hydrogen --page-background)
+   Hazard-tape motif borrowed from unrefind's UMI-OS boot theme. */
+
+/* Pantone 165 C → sRGB #FF671F (canonical UMI orange) */
+@define-color umi-bg        #FF671F;
+@define-color umi-bg-soft   #050505;
+@define-color umi-fg        #FFFFFF;
+@define-color umi-fg-dim    rgba(255, 255, 255, 0.55);
+@define-color umi-warn      #050505;
+@define-color umi-crit      #050505;
+
+* {
+  background-color: @umi-bg;
+  color: @umi-fg;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'Monaspace Krypton';
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: @umi-bg;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+  color: @umi-fg;
+  font-family: 'Monaspace Krypton';
+  font-size: 12px;
+}
+
+#workspaces button.empty {
+  color: @umi-fg-dim;
+  opacity: 1;
+}
+
+#workspaces button.active {
+  color: #FFFFFF;
+  background-image: none;
+}
+
+#workspaces button.active label {
+  color: #FFFFFF;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #C94A00 0px,
+    #C94A00 2px,
+    #FF8A4A 2px,
+    #FF8A4A 4px
+  );
+  min-width: 17px;
+  padding: 0;
+  text-shadow: 0 1px 1px #050505;
+}
+
+#cpu,
+#battery,
+#pulseaudio,
+#custom-omarchy,
+#custom-update {
+  min-width: 12px;
+  margin: 0 12px;
+}
+
+#tray {
+  margin-right: 22px;
+  margin-left: 6px;
+}
+
+#bluetooth {
+  margin-right: 24px;
+  margin-left: 12px;
+}
+
+#network {
+  margin-right: 22px;
+  margin-left: 12px;
+}
+
+#custom-expand-icon {
+  margin-right: 24px;
+  color: @umi-fg-dim;
+}
+
+tooltip {
+  background-color: #050505;
+  border: 1px solid #FF671F;
+  padding: 2px;
+}
+
+tooltip label {
+  color: #FFFFFF;
+  font-family: 'Monaspace Krypton';
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin: 0;
+  color: @umi-fg;
+  font-weight: 700;
+}
+
+#custom-location {
+  min-width: 210px;
+  margin-right: 18px;
+  color: @umi-fg;
+  font-weight: 700;
+}
+
+#custom-weather {
+  min-width: 210px;
+  margin-left: 18px;
+  color: @umi-fg;
+  font-weight: 700;
+}
+
+#battery.warning {
+  color: @umi-warn;
+}
+
+#battery.critical {
+  color: @umi-crit;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @umi-crit;
+}
+
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: @umi-crit;
+}
