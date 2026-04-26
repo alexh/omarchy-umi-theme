@@ -1,0 +1,83 @@
+/* UMI Obsidian theme — industrial palette, orange as activation only */
+
+.theme-dark, .theme-light {
+  --background-primary: #1a1a1a;
+  --background-primary-alt: #1a1a1a;
+  --background-secondary: #1a1a1a;
+  --background-secondary-alt: #1a1a1a;
+  --text-normal: #fbf1c7;
+
+  --text-selection: #FF6700;
+
+  --background-modifier-border: #3c3836;
+
+  /* Headings cycle through gruvbox secondaries — orange reserved for accents */
+  --text-title-h1: #fb4934;
+  --text-title-h2: #b8bb26;
+  --text-title-h3: #fabd2f;
+  --text-title-h4: #83a598;
+  --text-title-h5: #B19CD9;
+  --text-title-h6: #8ec07c;
+
+  --text-link: #FF6700;
+  --text-accent: #FF6700;
+  --text-accent-hover: #FF4500;
+  --interactive-accent: #FF6700;
+  --interactive-accent-hover: #FF4500;
+
+  --text-muted: color-mix(in srgb, #fbf1c7 70%, transparent);
+  --text-faint: color-mix(in srgb, #fbf1c7 55%, transparent);
+
+  --code-normal: #8ec07c;
+
+  --text-error: #fb4934;
+  --text-error-hover: #FF4500;
+  --text-success: #b8bb26;
+
+  --tag-color: #FF6700;
+  --tag-background: #3c3836;
+
+  --graph-line: #3c3836;
+  --graph-node: #FF6700;
+  --graph-node-focused: #fbf1c7;
+  --graph-node-tag: #8ec07c;
+  --graph-node-attachment: #b8bb26;
+}
+
+.cm-header-1, .markdown-rendered h1 { color: var(--text-title-h1); }
+.cm-header-2, .markdown-rendered h2 { color: var(--text-title-h2); }
+.cm-header-3, .markdown-rendered h3 { color: var(--text-title-h3); }
+.cm-header-4, .markdown-rendered h4 { color: var(--text-title-h4); }
+.cm-header-5, .markdown-rendered h5 { color: var(--text-title-h5); }
+.cm-header-6, .markdown-rendered h6 { color: var(--text-title-h6); }
+
+.markdown-rendered code {
+  color: #8ec07c;
+}
+
+.cm-s-obsidian span.cm-keyword { color: #fb4934; }
+.cm-s-obsidian span.cm-string { color: #b8bb26; }
+.cm-s-obsidian span.cm-number { color: #fabd2f; }
+.cm-s-obsidian span.cm-comment { color: #3c3836; }
+.cm-s-obsidian span.cm-operator { color: #FF6700; }
+.cm-s-obsidian span.cm-def { color: #83a598; }
+
+.markdown-rendered a {
+  color: var(--text-link);
+}
+
+.markdown-rendered blockquote {
+  border-left-color: #FF6700;
+}
+
+.workspace-leaf.mod-active .workspace-leaf-header-title {
+  color: var(--interactive-accent);
+}
+
+.nav-file-title.is-active {
+  color: var(--interactive-accent);
+}
+
+.search-result-file-title {
+  color: var(--interactive-accent);
+}
