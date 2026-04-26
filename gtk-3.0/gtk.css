@@ -28,3 +28,9 @@
 @define-color error_color   #fb4934;
 
 @define-color borders rgba(60, 56, 54, 0.6);
+
+/* UMI font — Monaspace Krypton across all GTK4 surfaces.
+   Falls back to system monospace, then sans-serif if unavailable. */
+* {
+  font-family: 'Monaspace Krypton', 'JetBrains Mono', monospace;
+}
