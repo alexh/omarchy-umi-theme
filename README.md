@@ -31,6 +31,16 @@ btop applies a two-class gradient rule: attention-worthy meters (CPU, temp, used
   ```
   (`gtk-update-icon-cache` may report the cache as invalid — harmless,
   Nautilus reads icons directly from disk without it.)
+- [Silver-XCursors-3D cursor theme](https://www.gnome-look.org/p/999543) —
+  chrome/silver 3D-rendered XCursor set, fits the industrial-utility motif.
+  Manual install:
+  ```sh
+  # Download Silver-XCursors-3D-0.4.tar.lzma from the page above, then:
+  cd ~/.local/share/icons && tar --lzma -xf ~/Downloads/Silver-XCursors-3D-*.tar.lzma
+  ```
+  The theme's `hyprland.conf` exports the right env vars, so once the
+  files are on disk everything picks it up after `omarchy-theme-set umi`
+  (you may need `hyprctl setcursor 'Silver-3D' 24` to refresh open windows).
 
 ## Install
 
