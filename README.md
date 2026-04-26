@@ -37,6 +37,8 @@ btop applies a two-class gradient rule: attention-worthy meters (CPU, temp, used
   ```sh
   # Download Silver-XCursors-3D-0.4.tar.lzma from the page above, then:
   cd ~/.local/share/icons && tar --lzma -xf ~/Downloads/Silver-XCursors-3D-*.tar.lzma
+  # Rename so the dir matches the theme name in index.theme:
+  mv Silver-XCursors-3D-* Silver-3D
   ```
   The theme's `hyprland.conf` exports the right env vars, so once the
   files are on disk everything picks it up after `omarchy-theme-set umi`
