@@ -34,3 +34,96 @@
 * {
   font-family: 'Monaspace Krypton', 'JetBrains Mono', monospace;
 }
+
+/* ============================================================
+   Nautilus-specific UMI styling — push the orange harder
+   ============================================================ */
+
+/* Sidebar: hard vertical separator and a stronger active-row accent */
+.nautilus-window navigation-sidebar {
+  background-color: #1a1208;
+  border-right: 2px solid #3c3836;
+}
+.nautilus-window navigation-sidebar > row:selected,
+.nautilus-window navigation-sidebar > row:selected:hover {
+  background-color: #FF6700;
+  color: #1a1208;
+}
+.nautilus-window navigation-sidebar > row:hover {
+  background-color: rgba(255, 103, 0, 0.18);
+}
+
+/* Header bar: subtle bottom border + cream title */
+.nautilus-window headerbar {
+  background-color: #1f1410;
+  border-bottom: 1px solid #3c3836;
+}
+.nautilus-window headerbar windowtitle {
+  color: #fbf1c7;
+}
+
+/* Path bar: orange accent on current directory */
+.nautilus-window .path-bar button {
+  background: transparent;
+  color: #d5c4a1;
+}
+.nautilus-window .path-bar button:checked,
+.nautilus-window .path-bar button:active {
+  color: #FF6700;
+}
+.nautilus-window .path-bar button:hover {
+  background-color: rgba(255, 103, 0, 0.15);
+  color: #fbf1c7;
+}
+
+/* Grid + list selection: orange ring + dark text */
+.nautilus-window gridview > child:selected,
+.nautilus-window listview > row:selected {
+  background-color: rgba(255, 103, 0, 0.85);
+  color: #1a1208;
+  border-radius: 4px;
+}
+.nautilus-window gridview > child:hover,
+.nautilus-window listview > row:hover {
+  background-color: rgba(255, 103, 0, 0.12);
+}
+
+/* Search/location entry: orange focus ring */
+.nautilus-window entry:focus {
+  border-color: #FF6700;
+  outline: 1px solid #FF6700;
+  outline-offset: -2px;
+}
+
+/* Buttons in dialogs and headerbar */
+.nautilus-window button.suggested-action,
+.nautilus-window button.default {
+  background-color: #FF6700;
+  color: #1a1208;
+  border: none;
+}
+.nautilus-window button.suggested-action:hover {
+  background-color: #FF7a1a;
+}
+
+/* Scrollbar: thin orange thumb on warm-dark trough */
+.nautilus-window scrollbar slider {
+  background-color: rgba(255, 103, 0, 0.5);
+  border-radius: 8px;
+  min-width: 6px;
+  min-height: 6px;
+}
+.nautilus-window scrollbar slider:hover {
+  background-color: #FF6700;
+}
+.nautilus-window scrollbar trough {
+  background-color: transparent;
+}
+
+/* Status / counter bar at the bottom of the file list */
+.nautilus-window statusbar,
+.nautilus-window .floating-bar {
+  background-color: #1f1410;
+  color: #d5c4a1;
+  border-top: 1px solid #3c3836;
+}
