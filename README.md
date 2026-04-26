@@ -21,11 +21,16 @@ btop applies a two-class gradient rule: attention-worthy meters (CPU, temp, used
 ## Requirements
 
 - Omarchy 3.x
-- [Crystal Remix icon theme](https://github.com/dangvd/crystal-remix-icon-theme) — install once:
+- [Nova7 icon theme](https://www.gnome-look.org/p/1379986) — skeuomorphic
+  '00s/'10s-rooted set, KDE-tagged but reads as a standard XDG icon theme
+  (works fine with GTK/Nautilus). Manual install:
   ```sh
-  git clone https://github.com/dangvd/crystal-remix-icon-theme.git
-  cd crystal-remix-icon-theme && ./install.sh
+  # Download the latest Nova7-X-X-X.tar.gz from the page above, then:
+  cd ~/.local/share/icons && tar -xzf ~/Downloads/Nova7-*.tar.gz
+  gsettings set org.gnome.desktop.interface icon-theme 'Nova7'
   ```
+  (`gtk-update-icon-cache` may report the cache as invalid — harmless,
+  Nautilus reads icons directly from disk without it.)
 
 ## Install
 
