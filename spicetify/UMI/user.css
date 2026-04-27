@@ -141,9 +141,38 @@ nav[aria-label="Main"] {
               0 0 0 1px rgba(255, 255, 255, 0.10);
 }
 
-/* ----- Buttons — glossy aqua-style with cream highlight ----- */
+/* ----- Circular play buttons (cards + player bar) — force circle so
+   the orange gradient doesn't paint a square box around the wrapper.
+   These elements have a square click target with a circular visible
+   button inside; without the radius override, our background fills
+   the whole click target. ----- */
 .main-playButton-PlayButton,
 .main-playPauseButton-button,
+.main-playButton-button,
+button.main-playButton-PlayButton {
+  background: linear-gradient(180deg,
+              #FF8a3a 0%,
+              #FF6700 50%,
+              #cc4a00 100%) !important;
+  color: #14090a !important;
+  border: 1px solid rgba(0, 0, 0, 0.40) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--umi-bevel),
+              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+}
+.main-playButton-PlayButton:hover,
+.main-playPauseButton-button:hover,
+.main-playButton-button:hover {
+  background: linear-gradient(180deg,
+              #FFa050 0%,
+              #FF7a1a 50%,
+              #d85500 100%) !important;
+  box-shadow: var(--umi-bevel),
+              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Rectangular primary buttons (Save / Follow / large CTAs) — same
+   gradient treatment but with a pill radius, NOT a forced circle. */
 button.Button-buttonPrimary-isUsingKeyboard,
 button.Button-sm-buttonPrimary,
 .encore-bright-accent-set button[data-encore-id="buttonPrimary"] {
@@ -157,15 +186,11 @@ button.Button-sm-buttonPrimary,
               0 2px 6px rgba(0, 0, 0, 0.45) !important;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
-.main-playButton-PlayButton:hover,
-.main-playPauseButton-button:hover,
 .encore-bright-accent-set button[data-encore-id="buttonPrimary"]:hover {
   background: linear-gradient(180deg,
               #FFa050 0%,
               #FF7a1a 50%,
               #d85500 100%) !important;
-  box-shadow: var(--umi-bevel),
-              0 2px 6px rgba(0, 0, 0, 0.45) !important;
 }
 
 /* Secondary buttons (Save, Follow, etc.) — glassy cream */
