@@ -1,0 +1,249 @@
+/* ============================================================
+   UMI Spicetify theme — early-2000s glass aesthetic
+   Vista Aero × Aqua × Spotify-2010, retinted to UMI palette.
+   ============================================================ */
+
+:root {
+  --umi-orange:        #FF6700;
+  --umi-orange-soft:   rgba(255, 103, 0, 0.20);
+  --umi-cream:         #fbf1c7;
+  --umi-cream-soft:    rgba(251, 241, 199, 0.10);
+  --umi-warm-dark:     #2a1c12;
+  --umi-warm-dark-deep:#14090a;
+  --umi-warm-dark-mid: #1f1410;
+  --umi-warm-grey:     #3c3836;
+
+  /* Glass tokens — reused across surfaces */
+  --umi-glass-bg:        rgba(42, 28, 18, 0.55);
+  --umi-glass-blur:      blur(24px) saturate(160%) brightness(1.05);
+  --umi-glass-highlight: linear-gradient(180deg,
+                          rgba(255, 255, 255, 0.10) 0%,
+                          rgba(255, 255, 255, 0.04) 30%,
+                          rgba(255, 255, 255, 0) 60%);
+  --umi-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+               inset 0 -1px 0 rgba(0, 0, 0, 0.40);
+  --umi-shadow-deep: 0 6px 18px rgba(0, 0, 0, 0.55),
+                     0 1px 0 rgba(0, 0, 0, 0.30);
+  --umi-radius:          10px;
+  --umi-radius-sm:       6px;
+}
+
+/* ----- Whole-window base background (warmth shines through translucent panels) ----- */
+.Root__main-view,
+.Root__top-container,
+body {
+  background: radial-gradient(
+    ellipse at top left,
+    #3a2818 0%,
+    #2a1c12 40%,
+    #14090a 100%
+  ) !important;
+}
+
+/* ----- Sidebar — frosted glass over warm-dark ----- */
+.Root__nav-bar,
+.Root__nav-bar-container,
+nav[aria-label="Main"] {
+  background: var(--umi-glass-bg) !important;
+  backdrop-filter: var(--umi-glass-blur);
+  -webkit-backdrop-filter: var(--umi-glass-blur);
+  border-right: 1px solid rgba(60, 56, 54, 0.6);
+  box-shadow: var(--umi-shadow-deep);
+}
+.Root__nav-bar::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--umi-glass-highlight);
+  pointer-events: none;
+}
+
+/* Sidebar nav items — glossy on hover, orange on active */
+.main-yourLibraryX-libraryItemContainer:hover,
+.spicetify-playlist-list li:hover {
+  background: var(--umi-orange-soft) !important;
+  border-radius: var(--umi-radius-sm);
+}
+.spicetify-playlist-list li.active a {
+  color: var(--umi-cream) !important;
+  background: linear-gradient(180deg,
+              rgba(255, 103, 0, 0.95) 0%,
+              rgba(255, 103, 0, 0.75) 60%,
+              rgba(255, 103, 0, 0.85) 100%) !important;
+  box-shadow: var(--umi-bevel);
+  border-radius: var(--umi-radius-sm);
+}
+
+/* ----- Top bar — chrome glass with subtle highlight ----- */
+.Root__top-bar,
+.main-topBar-topbarContent {
+  background: linear-gradient(180deg,
+              rgba(31, 20, 16, 0.85) 0%,
+              rgba(20, 9, 10, 0.90) 100%) !important;
+  backdrop-filter: var(--umi-glass-blur);
+  -webkit-backdrop-filter: var(--umi-glass-blur);
+  border-bottom: 1px solid rgba(60, 56, 54, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+              0 1px 6px rgba(0, 0, 0, 0.40);
+}
+
+/* ----- Now-playing bar — heaviest glass treatment ----- */
+.Root__now-playing-bar,
+.main-nowPlayingBar-nowPlayingBar {
+  background: linear-gradient(180deg,
+              rgba(31, 20, 16, 0.92) 0%,
+              rgba(20, 9, 10, 0.96) 100%) !important;
+  backdrop-filter: var(--umi-glass-blur);
+  -webkit-backdrop-filter: var(--umi-glass-blur);
+  border-top: 1px solid rgba(60, 56, 54, 0.7);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Album cover in now-playing — framed with subtle drop shadow */
+.main-nowPlayingWidget-coverArt,
+.cover-art-image {
+  border-radius: var(--umi-radius-sm) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(255, 255, 255, 0.10),
+              inset 0 0 0 1px rgba(0, 0, 0, 0.30) !important;
+}
+
+/* Progress bar — chromed orange */
+.progress-bar__bg .progress-bar__fg,
+.progress-bar [data-testid="progress-bar"] {
+  background: linear-gradient(180deg,
+              #FF8a3a 0%,
+              #FF6700 50%,
+              #cc4a00 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.30);
+  border-radius: 999px;
+}
+
+/* ----- Cards (playlist/album tiles) — glassy with hover lift ----- */
+.main-card-card {
+  background: rgba(31, 20, 16, 0.65) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(60, 56, 54, 0.5);
+  border-radius: var(--umi-radius);
+  box-shadow: var(--umi-bevel),
+              0 2px 8px rgba(0, 0, 0, 0.40);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.main-card-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--umi-bevel),
+              0 8px 22px rgba(0, 0, 0, 0.55),
+              0 0 0 1px var(--umi-orange-soft);
+}
+.main-card-imageContainer {
+  border-radius: var(--umi-radius-sm) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45),
+              0 0 0 1px rgba(255, 255, 255, 0.10);
+}
+
+/* ----- Buttons — glossy aqua-style with cream highlight ----- */
+.main-playButton-PlayButton,
+.main-playPauseButton-button,
+button.Button-buttonPrimary-isUsingKeyboard,
+button.Button-sm-buttonPrimary,
+.encore-bright-accent-set button[data-encore-id="buttonPrimary"] {
+  background: linear-gradient(180deg,
+              #FF8a3a 0%,
+              #FF6700 50%,
+              #cc4a00 100%) !important;
+  color: #14090a !important;
+  border: 1px solid rgba(0, 0, 0, 0.40) !important;
+  box-shadow: var(--umi-bevel),
+              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.main-playButton-PlayButton:hover,
+.main-playPauseButton-button:hover,
+.encore-bright-accent-set button[data-encore-id="buttonPrimary"]:hover {
+  background: linear-gradient(180deg,
+              #FFa050 0%,
+              #FF7a1a 50%,
+              #d85500 100%) !important;
+  box-shadow: var(--umi-bevel),
+              0 0 12px var(--umi-orange-soft),
+              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Secondary buttons (Save, Follow, etc.) — glassy cream */
+button.Button-buttonSecondary,
+.encore-base-set button[data-encore-id="buttonSecondary"] {
+  background: linear-gradient(180deg,
+              rgba(251, 241, 199, 0.12) 0%,
+              rgba(251, 241, 199, 0.04) 100%) !important;
+  color: var(--umi-cream) !important;
+  border: 1px solid rgba(251, 241, 199, 0.25) !important;
+  box-shadow: var(--umi-bevel) !important;
+}
+
+/* ----- Track list — translucent rows, orange selection ----- */
+.main-trackList-trackList,
+.main-trackList-trackListRow {
+  background-color: transparent !important;
+}
+.main-trackList-trackListRow:hover {
+  background: rgba(255, 103, 0, 0.10) !important;
+  border-radius: var(--umi-radius-sm);
+}
+.main-trackList-selected,
+.main-trackList-trackListRow[aria-selected="true"] {
+  background: linear-gradient(180deg,
+              rgba(255, 103, 0, 0.85) 0%,
+              rgba(204, 74, 0, 0.85) 100%) !important;
+  color: var(--umi-cream) !important;
+  border-radius: var(--umi-radius-sm);
+  box-shadow: var(--umi-bevel);
+}
+
+/* ----- Search input — glassy inset ----- */
+.main-search-searchBar input,
+.main-globalNav-searchSection input {
+  background: rgba(20, 9, 10, 0.55) !important;
+  border: 1px solid rgba(60, 56, 54, 0.7) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.50),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  color: var(--umi-cream) !important;
+  border-radius: 999px !important;
+}
+.main-search-searchBar input:focus {
+  border-color: var(--umi-orange) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.50),
+              0 0 0 2px var(--umi-orange-soft);
+}
+
+/* ----- Scrollbars — chrome orange ----- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+              rgba(255, 103, 0, 0.7),
+              rgba(204, 74, 0, 0.7)) !important;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+              rgba(255, 138, 58, 0.9),
+              rgba(204, 74, 0, 0.9)) !important;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.20);
+  border-radius: 999px;
+}
+
+/* ----- Tooltips ----- */
+.main-tooltip-tip {
+  background: var(--umi-glass-bg) !important;
+  backdrop-filter: var(--umi-glass-blur);
+  -webkit-backdrop-filter: var(--umi-glass-blur);
+  border: 1px solid rgba(255, 103, 0, 0.4);
+  color: var(--umi-cream) !important;
+  box-shadow: var(--umi-shadow-deep);
+}
