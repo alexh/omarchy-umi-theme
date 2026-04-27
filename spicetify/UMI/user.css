@@ -141,38 +141,41 @@ nav[aria-label="Main"] {
               0 0 0 1px rgba(255, 255, 255, 0.10);
 }
 
-/* ----- Card play buttons — hidden until card hover, then orange.
-   Spotify defaults to opacity:0 with a hover-reveal; restore that
-   explicitly so our orange override doesn't force always-visible. */
-.main-card-card .main-playButton-PlayButton,
-.main-card-card .main-playButton-button {
-  opacity: 0 !important;
-  transition: opacity 0.18s ease;
+/* ----- Card play buttons — only orange while Spotify is showing the
+   container (it adds .main-card-PlayButtonContainerVisible on card
+   hover). Don't paint background on the hidden state, otherwise
+   the orange would bleed through the wrapper visibility. ----- */
+.main-card-PlayButtonContainer .main-playButton-PlayButton {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-.main-card-card:hover .main-playButton-PlayButton,
-.main-card-card:hover .main-playButton-button,
-.main-card-card:focus-within .main-playButton-PlayButton {
-  opacity: 1 !important;
-}
-
-/* ----- Circular play buttons (cards + player bar) — clean orange,
-   forced circle so background doesn't bleed past the visible shape.
-   Subtle drop shadow only; bevel/gradient was visually too heavy. */
-.main-playButton-PlayButton,
-.main-playPauseButton-button,
-.main-playButton-button,
-button.main-playButton-PlayButton {
+.main-card-PlayButtonContainerVisible .main-playButton-PlayButton {
   background: var(--umi-orange) !important;
   color: #14090a !important;
   border: none !important;
   border-radius: 50% !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
 }
-.main-playButton-PlayButton:hover,
-.main-playPauseButton-button:hover,
-.main-playButton-button:hover {
+.main-card-PlayButtonContainerVisible .main-playButton-PlayButton:hover {
   background: #FF7a1a !important;
-  transform: scale(1.04);
+}
+
+/* ----- Big page-level play button (.main-actionBar... wrapper) and
+   player-bar play/pause — always visible, clean orange circle. ----- */
+.main-actionBar-ActionBarPlayButtonContainer .main-playButton-PlayButton,
+.main-topBar-playButtonWrapper .main-playButton-PlayButton,
+.main-playPauseButton-button {
+  background: var(--umi-orange) !important;
+  color: #14090a !important;
+  border: none !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+}
+.main-actionBar-ActionBarPlayButtonContainer .main-playButton-PlayButton:hover,
+.main-topBar-playButtonWrapper .main-playButton-PlayButton:hover,
+.main-playPauseButton-button:hover {
+  background: #FF7a1a !important;
 }
 
 /* ----- Rectangular primary CTAs (Save / Follow / "Play" pill) —
