@@ -151,37 +151,16 @@ nav[aria-label="Main"] {
               0 0 0 1px rgba(255, 255, 255, 0.10);
 }
 
-/* Play buttons: Spotify's stock visibility + circle shape + hover
-   behavior is preserved — we only swap the green via :root variables
-   above. Don't add custom background/shape rules here, they fight the
-   Encore cascade and lose. */
-
-/* ----- Rectangular primary CTAs (Save / Follow / "Play" pill) —
-   orange replaces Spotify green. NOT forced circular. ----- */
-button[data-encore-id="buttonPrimary"],
-.encore-bright-accent-set button[data-encore-id="buttonPrimary"],
-button.Button-buttonPrimary-isUsingKeyboard,
-button.Button-sm-buttonPrimary {
-  background: var(--umi-orange) !important;
-  color: #14090a !important;
-  border: none !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.40) !important;
-}
-button[data-encore-id="buttonPrimary"]:hover,
-.encore-bright-accent-set button[data-encore-id="buttonPrimary"]:hover {
-  background: #FF7a1a !important;
-}
-
-/* Secondary buttons (Save, Follow, etc.) — glassy cream */
-button.Button-buttonSecondary,
-.encore-base-set button[data-encore-id="buttonSecondary"] {
-  background: linear-gradient(180deg,
-              rgba(251, 241, 199, 0.12) 0%,
-              rgba(251, 241, 199, 0.04) 100%) !important;
-  color: var(--umi-cream) !important;
-  border: 1px solid rgba(251, 241, 199, 0.25) !important;
-  box-shadow: var(--umi-bevel) !important;
-}
+/* All buttons: Spotify's stock visibility + sizing + hover state +
+   per-component styling is preserved. We only swap the accent color
+   via the :root variable overrides above. Adding our own background
+   rules here previously caused two bugs:
+     1. data-encore-id="buttonPrimary" matched the card play buttons
+        too, so they painted orange always (Spotify hides them via
+        opacity on the parent container, but our rule made them paint
+        anyway — visible orange even when card wasn't hovered).
+     2. Our hover :pseudo lost specificity battles against Spotify's
+        own hover rules, leaving the original green peeking through. */
 
 /* ----- Track list — translucent rows, orange selection ----- */
 .main-trackList-trackList,
