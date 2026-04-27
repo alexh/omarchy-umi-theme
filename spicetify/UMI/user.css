@@ -141,56 +141,54 @@ nav[aria-label="Main"] {
               0 0 0 1px rgba(255, 255, 255, 0.10);
 }
 
-/* ----- Circular play buttons (cards + player bar) — force circle so
-   the orange gradient doesn't paint a square box around the wrapper.
-   These elements have a square click target with a circular visible
-   button inside; without the radius override, our background fills
-   the whole click target. ----- */
+/* ----- Card play buttons — hidden until card hover, then orange.
+   Spotify defaults to opacity:0 with a hover-reveal; restore that
+   explicitly so our orange override doesn't force always-visible. */
+.main-card-card .main-playButton-PlayButton,
+.main-card-card .main-playButton-button {
+  opacity: 0 !important;
+  transition: opacity 0.18s ease;
+}
+.main-card-card:hover .main-playButton-PlayButton,
+.main-card-card:hover .main-playButton-button,
+.main-card-card:focus-within .main-playButton-PlayButton {
+  opacity: 1 !important;
+}
+
+/* ----- Circular play buttons (cards + player bar) — clean orange,
+   forced circle so background doesn't bleed past the visible shape.
+   Subtle drop shadow only; bevel/gradient was visually too heavy. */
 .main-playButton-PlayButton,
 .main-playPauseButton-button,
 .main-playButton-button,
 button.main-playButton-PlayButton {
-  background: linear-gradient(180deg,
-              #FF8a3a 0%,
-              #FF6700 50%,
-              #cc4a00 100%) !important;
+  background: var(--umi-orange) !important;
   color: #14090a !important;
-  border: 1px solid rgba(0, 0, 0, 0.40) !important;
+  border: none !important;
   border-radius: 50% !important;
-  box-shadow: var(--umi-bevel),
-              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
 }
 .main-playButton-PlayButton:hover,
 .main-playPauseButton-button:hover,
 .main-playButton-button:hover {
-  background: linear-gradient(180deg,
-              #FFa050 0%,
-              #FF7a1a 50%,
-              #d85500 100%) !important;
-  box-shadow: var(--umi-bevel),
-              0 2px 6px rgba(0, 0, 0, 0.45) !important;
+  background: #FF7a1a !important;
+  transform: scale(1.04);
 }
 
-/* Rectangular primary buttons (Save / Follow / large CTAs) — same
-   gradient treatment but with a pill radius, NOT a forced circle. */
+/* ----- Rectangular primary CTAs (Save / Follow / "Play" pill) —
+   orange replaces Spotify green. NOT forced circular. ----- */
+button[data-encore-id="buttonPrimary"],
+.encore-bright-accent-set button[data-encore-id="buttonPrimary"],
 button.Button-buttonPrimary-isUsingKeyboard,
-button.Button-sm-buttonPrimary,
-.encore-bright-accent-set button[data-encore-id="buttonPrimary"] {
-  background: linear-gradient(180deg,
-              #FF8a3a 0%,
-              #FF6700 50%,
-              #cc4a00 100%) !important;
+button.Button-sm-buttonPrimary {
+  background: var(--umi-orange) !important;
   color: #14090a !important;
-  border: 1px solid rgba(0, 0, 0, 0.40) !important;
-  box-shadow: var(--umi-bevel),
-              0 2px 6px rgba(0, 0, 0, 0.45) !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.40) !important;
 }
+button[data-encore-id="buttonPrimary"]:hover,
 .encore-bright-accent-set button[data-encore-id="buttonPrimary"]:hover {
-  background: linear-gradient(180deg,
-              #FFa050 0%,
-              #FF7a1a 50%,
-              #d85500 100%) !important;
+  background: #FF7a1a !important;
 }
 
 /* Secondary buttons (Save, Follow, etc.) — glassy cream */
