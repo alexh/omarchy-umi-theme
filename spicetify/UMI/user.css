@@ -133,8 +133,7 @@ nav[aria-label="Main"] {
 .main-card-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--umi-bevel),
-              0 8px 22px rgba(0, 0, 0, 0.55),
-              0 0 0 1px var(--umi-orange-soft);
+              0 8px 22px rgba(0, 0, 0, 0.55);
 }
 .main-card-imageContainer {
   border-radius: var(--umi-radius-sm) !important;
@@ -166,7 +165,6 @@ button.Button-sm-buttonPrimary,
               #FF7a1a 50%,
               #d85500 100%) !important;
   box-shadow: var(--umi-bevel),
-              0 0 12px var(--umi-orange-soft),
               0 2px 6px rgba(0, 0, 0, 0.45) !important;
 }
 
