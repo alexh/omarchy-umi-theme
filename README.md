@@ -4,7 +4,7 @@
 
 A desktop theme for [Omarchy](https://omarchy.org). Dark only. Industrial palette.
 
-Part of the Utility Materials cross-surface theme system — companion to the [UMI Blender theme](https://github.com/alexh/umi-blender-theme), [UMI VS Code theme](https://marketplace.visualstudio.com/items?itemName=utility-materials.utility-materials-theme), and UMI Obsidian theme.
+Part of the Utility Materials cross-surface theme system — companion to the [UMI Blender theme](https://github.com/alexh/umi-blender-theme), [UMI VS Code theme](https://marketplace.visualstudio.com/items?itemName=utility-materials.utility-materials-theme), UMI Obsidian theme, and the UMI Steam theme (bundled in this repo under [`steam/`](./steam) — see [Steam (via Millennium)](#steam-via-millennium) below).
 
 ## Palette
 
@@ -75,6 +75,34 @@ Appears in the picker as `umi`.
 - VS Code — [Utility Materials Protocol](https://marketplace.visualstudio.com/items?itemName=utility-materials.utility-materials-theme)
 - Chromium — window chrome color
 - GTK icons — [Crystal Remix](https://github.com/dangvd/crystal-remix-icon-theme)
+- Steam — via [Millennium](https://github.com/SteamClientHomebrew/Millennium); covers the library, friends/chat, and Big Picture surfaces (see [Steam (via Millennium)](#steam-via-millennium) below)
+- Spotify — via [Spicetify](https://spicetify.app); the [`spicetify/UMI/`](./spicetify/UMI) directory ships the early-2000s glass theme + a four-pass `post-apply.sh` that flips Spotify's hardcoded greens (CSS, JS, SVG, Lottie) to UMI orange.
+- Spotify visualizer — via [`alexh/spicetify-visualizer-umi`](https://github.com/alexh/spicetify-visualizer-umi), a fork of [Konsl/spicetify-visualizer](https://github.com/Konsl/spicetify-visualizer) with three brand renderers (`UMI / Hazard Spectrum`, `UMI / Oscilloscope`, `UMI / Gauge Cluster`) layered on top of the upstream `ncs` / `spectrum` / `debug` set. Renderers honour the "Force UMI palette" toggle in the visualizer menu so they ignore album-art-derived accent colors and stay in brand.
+
+## Steam (via Millennium)
+
+The Steam client is themed through [Millennium](https://github.com/SteamClientHomebrew/Millennium), a community Steam client modding framework. Theme files live in [`steam/`](./steam) and follow Millennium's standard layout (`skin.json` + per-window `*.custom.css/js` files).
+
+**Install Millennium** from the AUR:
+
+```sh
+omarchy-pkg-aur-add millennium        # or: yay -S millennium
+```
+
+(Use `millennium`, not `millennium-git` — at time of writing the stable
+package is newer and far more actively maintained than the `-git` variant.)
+
+**Wire the theme into Millennium's skin loader.** Symlink the dev directory so edits hot-reload:
+
+```sh
+ln -s ~/dev/omarchy-umi-theme/steam ~/.local/share/Steam/millennium/themes/UMI
+```
+
+Launch Steam, open the Millennium settings panel (Steam menu → Millennium) → **Themes** → select **UMI**. CSS changes hot-reload on save; JS changes need a Steam restart. DevTools open with `Ctrl+Shift+I`.
+
+**Aesthetic.** Three-tone warm-dark chrome (`#14090a` deepest → `#2a1c12` primary → `#3c3836` mid) with cream `#fbf1c7` content panels — sidebar / titlebar / buttons read as chrome, game lists / dialogs / chat areas read as parchment. Hazard-orange marks activation only (active tabs, selected items, primary actions, focus rings). Surfaces carry a subtle SVG-`feTurbulence` grain (no image assets — pure inline `data:` URL). Layered ornate bevels via `box-shadow` stacks replace flat 2px Win95 insets.
+
+The CSS is structured around CSS custom properties in `webkit.css` (palette, bevels, surface backgrounds, radius). Per-window files (`libraryroot.custom.css`, `friends.custom.css`, `bigpicture.custom.css`) target Steam's React tree using selectors borrowed from [ricewind012/win95-themes](https://github.com/ricewind012/win95-themes) — verified-good against current Steam builds, though Steam ships frequently and any selector can rename. Iterate with DevTools when something stops applying.
 
 ## Notes
 
